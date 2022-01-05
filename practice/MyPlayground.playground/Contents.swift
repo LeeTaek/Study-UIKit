@@ -1,38 +1,44 @@
 import UIKit
+import Foundation
 
-// generic <Type 내가 정한 임의의 타입>
-// logic을 반복해서 쓰고 싶은 경우에는 func을 이용.
-// type을 여러가지를 반복해서 쓰고 싶은 경우 generic을 이용
+// Higher order function
+// 고차 함수
 
-// stack
-struct MyStack<MyType> where MyType: Numeric {                // type은 임의로 아무거나 써도 됨.
-    // where의 타입을 제한할 수 있음. 숫자의 경우 Numeric, 문자의 경우 StringProtocol
-    // where의 경우 내가 만든 타입을 그 스타일 안에서만 사용하고 싶은 경우사용함.
+let names = ["kim", "lee", "min", "john"]
 
-    var items = [MyType]()
-    
-    mutating func push(item: MyType) {              // struct 안에서 스스로 변하고 싶은 경우 self가 mutating 사용
-        items.append(item)
-    }
-    
-    mutating func pop() -> MyType? {
-        if items.isEmpty {
-            return nil
-        }
-        return items.removeLast()
-    }
+
+// map -> 이미 있는 값을 어떻게 추가하여 표현할지? ex. kim님 등
+let names2 = names.map { $0 + "님"}
+names2
+
+let names3 = names.map{ name in
+    name.count
+}
+let names4 = names.map{ name in
+    name.count > 3
 }
 
-var myStack = MyStack<String>()
+// filter -> 걸러서 필요한 것만 추출.
+let filterNames = names.filter{ (name) -> Bool in
+    name.count > 3
+}
+filterNames
 
-myStack.push(item: "4")
+// reduce -> 하나로 뭉친다, 통합, 합친다
+let sumNames = names.reduce("aaa") { $0 + $1 }
+sumNames
 
-var myStack2 = MyStack<Int>()
-myStack2.push(item: 5)
-myStack2.push(item: 6)
+let numberArr = [1, 2, 3, nil, 4, 5, nil]
+let sumNum = numberArr.reduce(0) {$0 + ($1 ?? 0) }      //   nil일 경우 인자를 못쓰기 때문에 옵셔널을 통해 0으로 대체. 또는 compactMap
+sumNum
+    
+// compactMap         : 안에 있는 nil값을 없앰.
+let numbers = numberArr.compactMap { $0 }           // compactMap은 nil 값을 없앰
+numbers
 
-myStack2.pop()
-myStack2.pop()
-myStack.pop()
+// flatmap   : 다차원 배열을 한단계씩 꺼내서 하나의 depth로 flat하게 꺼낼때.
+let numbers2 = [[1,2,3], [4,5,6]]
+let flatNum = numbers2.flatMap { $0 }
+flatNum
 
-// queue
+
