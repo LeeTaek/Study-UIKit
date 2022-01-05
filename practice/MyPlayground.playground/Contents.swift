@@ -1,51 +1,45 @@
 import UIKit
 
-// Initializer
-// 생성자
-// init : 프로퍼티 생성 시에 초기값을 설정 안할 때에 사용.
+// deInitializer
+// 해제 : 메모리에 올리는걸 없애는 과정
 
-class MyInfo {
-    var name: String
-    let myId: String
-    var age: Int?
-    var isAdult: Bool
+var a: Int? = 10
+a = nil                     // 메모리 해제
+
+
+class Game {
+    var score = 0
+    var name = ""
+    var round: Round?
     
-    // designated initializer
-    init(n: String, id: String) {
-        self.name = n
-        self.myId = id
-        self.isAdult = ((age ?? 0) > 19) ? true : false
+    init() {
+        print("game init")
     }
-    
- //   init(id: String) {              // init을 여러개 사용할 수도 있음.
- //       self.name = ""
- //       self.myId = id
- //      self.isAdult = (age > 19) ? true : false
- //   }
-    
-    // convenience initializer : 필수 조건 - 다른 init를 반드시 실행해야 한다.
-    // init 마다 같은 로직을 실행할 때에, 기존의 init을 가지고 분기를 만들어 실행.
-    // 위의 예에서는 isAdult의 로직을 공유.
-
-    convenience init(id: String) {
-        self.init(n: "", id: id)            //   반드시 실행해야 하는 init
+    deinit {                // 해제할 때에 뜨는 로직
+        print("game deinit")
     }
 }
 
-var myInfo1 = MyInfo(n: "kim", id: "abcd")  // 괄호는 init을 호출할 것이라고 표현하는 것. init이 생략됨.
-var myInfo2 = MyInfo(id : "dkdk")           //  요 경우 두번째 init을 호출
-
-myInfo1.myId
-myInfo1.name
-
-myInfo2.myId
-
-
-struct MyConfig {
-    var conf: String
-    
+class Round {
+    weak var gameInfo: Game?
+    var lastRound = 10
+    var rountTime = 20
+    deinit{
+        print("round deinit")
+    }
 }
 
-// structure일 때 초기값 없이 생성할 수 있으나 호출할 때에 init을 설정하도록 자동으로 뜸.
-// class는 프로퍼티가 옵셔널이 아닌이상 초기값을 꼭 설정해야함.
-// convenience init을 언제 사용하면 좋은지 생각해보기.
+var game: Game? = Game()
+var round: Round? = Round()
+
+round?.gameInfo = game
+game?.round = round
+
+game = nil
+round = nil
+// 티가 안나는 실수. 그러나 없애야 하는 실수.
+// 참조하는 인스턴스의 수(retain count)가 0이 될때 deinit이 된다.
+// 다음과 같은 상호참조 상황에서는 deinit이 불가능. 변수가 없어지더라도 메모리에서는 절대 안없어짐.
+// 이런 상황을 방지하기 위해선 참조하는 클래스의 관계를 생각해보자.
+// Round는 Game에 굉장히 의존적인 class. Game없이는 Round가 있을 수 없다. 때문에 game을 참조할때 weak를 사용.
+// weak는 retain count를 추가하지 않는다. 즉 game이 deinit 될 때 같이 없어진다는 것.
