@@ -1,60 +1,51 @@
 import UIKit
 
-// Properties
-// 프로퍼티
-// : 변수의 개념, 어딘가에 들어있는 변수를 프로퍼티라고 부른다.
-    
-    
+// Initializer
+// 생성자
+// init : 프로퍼티 생성 시에 초기값을 설정 안할 때에 사용.
 
 class MyInfo {
+    var name: String
+    let myId: String
+    var age: Int?
+    var isAdult: Bool
     
-    // stored property ( 값을 저장할 수 있는 프로퍼티 )
-    var name = ""
-    var age = 0
-    
-    // lazy stored property ( 분산효과. 큰 변수를 한번에 많은 것들을 메모리에 띄울때 버벅거릴 수 있음,
-    // 때문에 바로 사용할 것이 아니라면 lazy를 붙여 설정한다. 이 프로퍼티는 사용할 때에 메모리에 띄운다.)
-    lazy var myProfiles = [UIImage(named: "n"), UIImage(named: "a"), UIImage(named: "c")]
-    
-    
-    // computed property ( 계산 )
-    // 형식 - 변수 선언: 타입 {클로져}
-    var isAdult: Bool{
-        if age > 19 {
-            return true
-        }
-        return false
+    // designated initializer
+    init(n: String, id: String) {
+        self.name = n
+        self.myId = id
+        self.isAdult = ((age ?? 0) > 19) ? true : false
     }
     
-    // computed property 예시
-    // email을 보안을 위해 암호화 된 것으로 사용한다. (항상)
-    var _email = ""                 //  암호화 된 값을 받기 위한 프로퍼티
-    var email: String {
-        get{                    //   받은 값을 사용
-            return _email
-        }
-        set{
-            _email = newValue.hash.description        // 값이 들어오는걸 set으로 받을 때에, newValue로 받도록 지정되어있음.
-        }
+ //   init(id: String) {              // init을 여러개 사용할 수도 있음.
+ //       self.name = ""
+ //       self.myId = id
+ //      self.isAdult = (age > 19) ? true : false
+ //   }
+    
+    // convenience initializer : 필수 조건 - 다른 init를 반드시 실행해야 한다.
+    // init 마다 같은 로직을 실행할 때에, 기존의 init을 가지고 분기를 만들어 실행.
+    // 위의 예에서는 isAdult의 로직을 공유.
+
+    convenience init(id: String) {
+        self.init(n: "", id: id)            //   반드시 실행해야 하는 init
     }
 }
 
-let myInfo = MyInfo()
-myInfo.email = "abc@test.com"
+var myInfo1 = MyInfo(n: "kim", id: "abcd")  // 괄호는 init을 호출할 것이라고 표현하는 것. init이 생략됨.
+var myInfo2 = MyInfo(id : "dkdk")           //  요 경우 두번째 init을 호출
 
-myInfo.email
+myInfo1.myId
+myInfo1.name
 
-myInfo.age = 10
-myInfo.name = "kim"
-myInfo.isAdult
-
-print(myInfo.age)
+myInfo2.myId
 
 
+struct MyConfig {
+    var conf: String
+    
+}
 
-// 결론, 모든 proferty는 set은 안써도 get은 꼭 쓰인다.
-// 변수에 항상 추가적인 logic을 저장할 때에 computed property를 사용하면 유익.
-// 왜 stroed property와 computed propery를 사용하는지 생각해보기
-
-
-4005455
+// structure일 때 초기값 없이 생성할 수 있으나 호출할 때에 init을 설정하도록 자동으로 뜸.
+// class는 프로퍼티가 옵셔널이 아닌이상 초기값을 꼭 설정해야함.
+// convenience init을 언제 사용하면 좋은지 생각해보기.
