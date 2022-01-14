@@ -22,21 +22,30 @@ class ViewController: UIViewController {
         SettingModel(leftImageName: "hand.raised.fill", menuTitle: "Privacy", subTitle: nil, rightImageName: "chevron.right")])
     }
     
-
+    
+    // viewDidLoad는 호출이 한번만 되고 다시 실행이 안되는데 얘는 화면이 나올때 마다 계속 호출
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true // 네비게이션이 없으면 nil을 반환함
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     
-        
         settingTableView.delegate = self
         settingTableView.dataSource = self
         settingTableView.backgroundColor = UIColor(white: 250/255, alpha: 1)
-        
         // tableView에 다른 nib으로 작성한 cell을 등록하는 코드
         settingTableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
          
         settingTableView.register(UINib(nibName: "MenuCell", bundle: nil), forCellReuseIdentifier: "MenuCell")
+        
+        title = "Settings"
+    
+        self.view.backgroundColor = UIColor(white: 250/255, alpha: 1)
+        
+        // 세부 메뉴로 들어갈 때에 네비게이션에 전 항목으로 돌아가기 이름이 뜨는 것은 push와 pop 개념으로 처리한다.
         
         makeData()
         
@@ -56,6 +65,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return settingModel.count
     }
+    
+   
     
     //어떤 순서로 셀을 테이블에 보여줄거냐?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,13 +93,37 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 && indexPath.row == 0 {
+            
+            if let generalVC = UIStoryboard(name: "GeneralViewController", bundle: nil).instantiateViewController(withIdentifier: "GeneralViewController") as? GeneralViewController {
+                self.navigationController?.pushViewController(generalVC, animated: true)
+            }
+        }
+        
+        
+        if indexPath.section == 1 && indexPath.row == 1 {
+            
+            if let generalVC = UIStoryboard(name: "AccessibilityViewController", bundle: nil).instantiateViewController(withIdentifier: "AccessibilityViewController") as? AccessibilityViewController {
+                self.navigationController?.pushViewController(generalVC, animated: true)
+            }
+        }
+        
+        
+    }
     // 높이를 무조건 고정
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 80
+    
+    
+    
+    //
+    
 //    }
 //
    
-    
     
 }
 
