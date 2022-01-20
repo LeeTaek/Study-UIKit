@@ -17,13 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gearshape" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KdA-M4-870">
-                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gearshape" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KdA-M4-870">
+                                <rect key="frame" x="157" y="174" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9tR-uK-UV4"/>
+                                    <constraint firstAttribute="height" constant="100" id="uQz-bl-Sf3"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Setting Clone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuN-dO-cpe">
-                                <rect key="frame" x="157" y="526" width="151" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Clone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuN-dO-cpe">
+                                <rect key="frame" x="143" y="284" width="128.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -31,8 +34,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KdA-M4-870" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="97T-vD-6uE"/>
-                            <constraint firstItem="KdA-M4-870" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Csz-ci-x1a"/>
+                            <constraint firstItem="vuN-dO-cpe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1an-9W-4y3"/>
+                            <constraint firstItem="KdA-M4-870" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.5" id="gpy-OD-N8d"/>
+                            <constraint firstItem="KdA-M4-870" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uiq-sl-Z3m"/>
+                            <constraint firstItem="vuN-dO-cpe" firstAttribute="top" secondItem="KdA-M4-870" secondAttribute="bottom" constant="10" id="xZq-ox-iqt"/>
                         </constraints>
                     </view>
                 </viewController>

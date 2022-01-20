@@ -96,6 +96,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        // nib을 가져오는 경우
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let myidVC = MyIDViewController(nibName: "MyIDViewController", bundle: nil)
+           
+            self.present(myidVC, animated: true, completion: nil)
+        }
+        
+        
+        // 스토리 보드를 가져오는 경우
         if indexPath.section == 1 && indexPath.row == 0 {
             
             if let generalVC = UIStoryboard(name: "GeneralViewController", bundle: nil).instantiateViewController(withIdentifier: "GeneralViewController") as? GeneralViewController {
@@ -104,14 +117,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         
+        
         if indexPath.section == 1 && indexPath.row == 1 {
             
             if let generalVC = UIStoryboard(name: "AccessibilityViewController", bundle: nil).instantiateViewController(withIdentifier: "AccessibilityViewController") as? AccessibilityViewController {
                 self.navigationController?.pushViewController(generalVC, animated: true)
             }
         }
-        
-        
     }
     // 높이를 무조건 고정
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

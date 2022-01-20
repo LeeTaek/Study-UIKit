@@ -18,7 +18,6 @@ class GeneralCell: UITableViewCell {
     }
 }
 
-
 struct GeneralModel {
     var leftTitle = ""
 }
@@ -51,7 +50,6 @@ class GeneralViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     
-    
     @IBOutlet weak var GeneralTableView: UITableView!
     
     override func viewDidLoad() {
@@ -74,10 +72,7 @@ class GeneralViewController: UIViewController, UITableViewDelegate, UITableViewD
         GeneralModel(leftTitle: "Dictionary")] )
         
         model.append([GeneralModel(leftTitle: "Reset")])
-
-        
         
     }
-    
 
 }

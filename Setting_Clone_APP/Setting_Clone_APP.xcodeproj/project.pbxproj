@@ -25,6 +25,8 @@
 		74D0C15F278D6C5400EEF493 /* Setting_Clone_APPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0C15E278D6C5400EEF493 /* Setting_Clone_APPUITestsLaunchTests.swift */; };
 		74D0C16D278D8D7800EEF493 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0C16B278D8D7800EEF493 /* ProfileCell.swift */; };
 		74D0C16E278D8D7800EEF493 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0C16C278D8D7800EEF493 /* ProfileCell.xib */; };
+		74ECBEAB2794FF8600BCDF05 /* MyIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ECBEA92794FF8600BCDF05 /* MyIDViewController.swift */; };
+		74ECBEAC2794FF8600BCDF05 /* MyIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74ECBEAA2794FF8600BCDF05 /* MyIDViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		74D0C15E278D6C5400EEF493 /* Setting_Clone_APPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting_Clone_APPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		74D0C16B278D8D7800EEF493 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		74D0C16C278D8D7800EEF493 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		74ECBEA92794FF8600BCDF05 /* MyIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIDViewController.swift; sourceTree = "<group>"; };
+		74ECBEAA2794FF8600BCDF05 /* MyIDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyIDViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				744144A12791368B00D5FF6E /* GeneralViewController.storyboard */,
 				744144A3279142ED00D5FF6E /* AccessibilityViewController.swift */,
 				744144A7279143B600D5FF6E /* AccessibilityViewController.storyboard */,
+				74ECBEA92794FF8600BCDF05 /* MyIDViewController.swift */,
+				74ECBEAA2794FF8600BCDF05 /* MyIDViewController.xib */,
 			);
 			path = Setting_Clone_APP;
 			sourceTree = "<group>";
@@ -259,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				744144A22791368B00D5FF6E /* GeneralViewController.storyboard in Resources */,
+				74ECBEAC2794FF8600BCDF05 /* MyIDViewController.xib in Resources */,
 				74D0C148278D6C5300EEF493 /* LaunchScreen.storyboard in Resources */,
 				74D0C16E278D8D7800EEF493 /* ProfileCell.xib in Resources */,
 				744144A8279143B600D5FF6E /* AccessibilityViewController.storyboard in Resources */,
@@ -291,6 +298,7 @@
 			files = (
 				74D0C140278D6C5300EEF493 /* ViewController.swift in Sources */,
 				744144A5279142ED00D5FF6E /* AccessibilityViewController.swift in Sources */,
+				74ECBEAB2794FF8600BCDF05 /* MyIDViewController.swift in Sources */,
 				744144A02791367800D5FF6E /* GeneralViewController.swift in Sources */,
 				742F1208278E5CB60008F2CD /* MenuCell.swift in Sources */,
 				742F120D278E69D80008F2CD /* SettingModel.swift in Sources */,
