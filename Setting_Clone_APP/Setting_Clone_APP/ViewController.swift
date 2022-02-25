@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         settingTableView.delegate = self
         settingTableView.dataSource = self
         settingTableView.backgroundColor = UIColor(white: 250/255, alpha: 1)
+       
         // tableView에 다른 nib으로 작성한 cell을 등록하는 코드
         settingTableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
          
